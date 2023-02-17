@@ -36,15 +36,12 @@ exports.handler = async (event, _, callback) => {
 
   if (path.extname(uri).match(/(\.jpg|\.png|\.jpeg)$/g) && shouldServeWebp) {
     // We should only consider conversion if the source image exists.
-    console.log(`Response status: ${response.status}`);
     if (response.status === "200") {
-      console.log(`Received 200 response, attempting to serve webp`);
       const s3key = uri.substring(1).replace(/%20/g, ' ');
 
       const existingWebp = await getS3Resource(s3key);
 
       if (existingWebp) {
-        console.log(`Serving existing image from S3`);
         response.status = 200
         response.body = existingWebp.Body.toString('base64')
         response.bodyEncoding = 'base64'
@@ -87,9 +84,6 @@ exports.handler = async (event, _, callback) => {
           console.log(error);
         }
       }
-    }
-    else {
-      console.log(`Received response other than HTTP 200`);
     }
   }
   response.headers['cloudfront-webp-version'] = [{ value: process.env.AWS_LAMBDA_FUNCTION_VERSION }];
