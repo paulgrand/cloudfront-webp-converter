@@ -14,8 +14,8 @@ Once we've generated the image the first time, we store it in S3 so that any sub
 2. Create a blank NodeJS Lambda@EDGE function in us-east-1
 
 # Getting started
-1. Update "index.js" and change 
-2. Update "deploy.sh" and change FUNCTION_NAME, DIST_BUCKET
+1. Update `index.js` and change the `BUCKET`, `CACHE_STRATEGY`, `QUALITY` and `ALPHA_QUALITY` constants accordingly.
+2. Update `deploy.sh` and change `FUNCTION_NAME`, `DIST_BUCKET`
 
 # Deploying
 The deploy script (`./deploy.sh`) creates a build artifact and  
