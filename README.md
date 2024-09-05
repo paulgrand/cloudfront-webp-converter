@@ -10,7 +10,7 @@ that they can accept it via an `Accept` header, e.g. (`Accept: image/webp`).
 Once we've generated the image the first time, we store it in S3 so that any subsequent requests can be served more quickly.
 
 # PREREQUISITES
-1. Docker (we build the bundle in Docker to ensure compatibility with Lambda).
+1. Docker (we build the bundle in Docker to ensure compatibility with Lambda - i.e. installing Sharp via npm on MacOS leads to lambda execution issues).
 2. Create a blank NodeJS Lambda@EDGE function in us-east-1
 
 # Getting started
